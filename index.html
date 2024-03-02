@@ -1,0 +1,1720 @@
+i<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+    <head>
+        <meta charset="UTF-8"/>
+        <link rel="profile" href="http://gmpg.org/xfn/11"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+        <title>KNOXSS &#8211;State of the art in XSS Testing</title>
+        <meta name='robots' content='max-image-preview:large'/>
+        <link rel='dns-prefetch' href='//fonts.googleapis.com'/>
+        <link rel="alternate" type="application/rss+xml" title="KNOXSS &raquo; Feed" href="https://knoxss.me/?feed=rss2"/>
+        <link rel="alternate" type="application/rss+xml" title="KNOXSS &raquo; Comments Feed" href="https://knoxss.me/?feed=comments-rss2"/>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            window._wpemojiSettings = {
+                "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/",
+                "ext": ".png",
+                "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/",
+                "svgExt": ".svg",
+                "source": {
+                    "concatemoji": "https:\/\/knoxss.me\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.4.3"
+                }
+            };
+            /*! This file is auto-generated */
+            !function(i, n) {
+                var o, s, e;
+                function c(e) {
+                    try {
+                        var t = {
+                            supportTests: e,
+                            timestamp: (new Date).valueOf()
+                        };
+                        sessionStorage.setItem(o, JSON.stringify(t))
+                    } catch (e) {}
+                }
+                function p(e, t, n) {
+                    e.clearRect(0, 0, e.canvas.width, e.canvas.height),
+                    e.fillText(t, 0, 0);
+                    var t = new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data)
+                      , r = (e.clearRect(0, 0, e.canvas.width, e.canvas.height),
+                    e.fillText(n, 0, 0),
+                    new Uint32Array(e.getImageData(0, 0, e.canvas.width, e.canvas.height).data));
+                    return t.every(function(e, t) {
+                        return e === r[t]
+                    })
+                }
+                function u(e, t, n) {
+                    switch (t) {
+                    case "flag":
+                        return n(e, "\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f", "\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f") ? !1 : !n(e, "\ud83c\uddfa\ud83c\uddf3", "\ud83c\uddfa\u200b\ud83c\uddf3") && !n(e, "\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f", "\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");
+                    case "emoji":
+                        return !n(e, "\ud83e\udef1\ud83c\udffb\u200d\ud83e\udef2\ud83c\udfff", "\ud83e\udef1\ud83c\udffb\u200b\ud83e\udef2\ud83c\udfff")
+                    }
+                    return !1
+                }
+                function f(e, t, n) {
+                    var r = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope ? new OffscreenCanvas(300,150) : i.createElement("canvas")
+                      , a = r.getContext("2d", {
+                        willReadFrequently: !0
+                    })
+                      , o = (a.textBaseline = "top",
+                    a.font = "600 32px Arial",
+                    {});
+                    return e.forEach(function(e) {
+                        o[e] = t(a, e, n)
+                    }),
+                    o
+                }
+                function t(e) {
+                    var t = i.createElement("script");
+                    t.src = e,
+                    t.defer = !0,
+                    i.head.appendChild(t)
+                }
+                "undefined" != typeof Promise && (o = "wpEmojiSettingsSupports",
+                s = ["flag", "emoji"],
+                n.supports = {
+                    everything: !0,
+                    everythingExceptFlag: !0
+                },
+                e = new Promise(function(e) {
+                    i.addEventListener("DOMContentLoaded", e, {
+                        once: !0
+                    })
+                }
+                ),
+                new Promise(function(t) {
+                    var n = function() {
+                        try {
+                            var e = JSON.parse(sessionStorage.getItem(o));
+                            if ("object" == typeof e && "number" == typeof e.timestamp && (new Date).valueOf() < e.timestamp + 604800 && "object" == typeof e.supportTests)
+                                return e.supportTests
+                        } catch (e) {}
+                        return null
+                    }();
+                    if (!n) {
+                        if ("undefined" != typeof Worker && "undefined" != typeof OffscreenCanvas && "undefined" != typeof URL && URL.createObjectURL && "undefined" != typeof Blob)
+                            try {
+                                var e = "postMessage(" + f.toString() + "(" + [JSON.stringify(s), u.toString(), p.toString()].join(",") + "));"
+                                  , r = new Blob([e],{
+                                    type: "text/javascript"
+                                })
+                                  , a = new Worker(URL.createObjectURL(r),{
+                                    name: "wpTestEmojiSupports"
+                                });
+                                return void (a.onmessage = function(e) {
+                                    c(n = e.data),
+                                    a.terminate(),
+                                    t(n)
+                                }
+                                )
+                            } catch (e) {}
+                        c(n = f(s, u, p))
+                    }
+                    t(n)
+                }
+                ).then(function(e) {
+                    for (var t in e)
+                        n.supports[t] = e[t],
+                        n.supports.everything = n.supports.everything && n.supports[t],
+                        "flag" !== t && (n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && n.supports[t]);
+                    n.supports.everythingExceptFlag = n.supports.everythingExceptFlag && !n.supports.flag,
+                    n.DOMReady = !1,
+                    n.readyCallback = function() {
+                        n.DOMReady = !0
+                    }
+                }).then(function() {
+                    return e
+                }).then(function() {
+                    var e;
+                    n.supports.everything || (n.readyCallback(),
+                    (e = n.source || {}).concatemoji ? t(e.concatemoji) : e.wpemoji && e.twemoji && (t(e.twemoji),
+                    t(e.wpemoji)))
+                }))
+            }((window,
+            document), window._wpemojiSettings);
+            /* ]]> */
+        </script>
+        <style id='wp-emoji-styles-inline-css' type='text/css'>
+            img.wp-smiley, img.emoji {
+                display: inline !important;
+                border: none !important;
+                box-shadow: none !important;
+                height: 1em !important;
+                width: 1em !important;
+                margin: 0 0.07em !important;
+                vertical-align: -0.1em !important;
+                background: none !important;
+                padding: 0 !important;
+            }
+        </style>
+        <link rel='stylesheet' id='wp-block-library-css' href='https://knoxss.me/wp-includes/css/dist/block-library/style.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <style id='classic-theme-styles-inline-css' type='text/css'>
+            /*! This file is auto-generated */
+            .wp-block-button__link {
+                color: #fff;
+                background-color: #32373c;
+                border-radius: 9999px;
+                box-shadow: none;
+                text-decoration: none;
+                padding: calc(.667em + 2px) calc(1.333em + 2px);
+                font-size: 1.125em
+            }
+
+            .wp-block-file__button {
+                background: #32373c;
+                color: #fff;
+                text-decoration: none
+            }
+        </style>
+        <style id='global-styles-inline-css' type='text/css'>
+            body {
+                --wp--preset--color--black: #000000;
+                --wp--preset--color--cyan-bluish-gray: #abb8c3;
+                --wp--preset--color--white: #ffffff;
+                --wp--preset--color--pale-pink: #f78da7;
+                --wp--preset--color--vivid-red: #cf2e2e;
+                --wp--preset--color--luminous-vivid-orange: #ff6900;
+                --wp--preset--color--luminous-vivid-amber: #fcb900;
+                --wp--preset--color--light-green-cyan: #7bdcb5;
+                --wp--preset--color--vivid-green-cyan: #00d084;
+                --wp--preset--color--pale-cyan-blue: #8ed1fc;
+                --wp--preset--color--vivid-cyan-blue: #0693e3;
+                --wp--preset--color--vivid-purple: #9b51e0;
+                --wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);
+                --wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);
+                --wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);
+                --wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);
+                --wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);
+                --wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);
+                --wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);
+                --wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);
+                --wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);
+                --wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);
+                --wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);
+                --wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);
+                --wp--preset--font-size--small: 13px;
+                --wp--preset--font-size--medium: 20px;
+                --wp--preset--font-size--large: 36px;
+                --wp--preset--font-size--x-large: 42px;
+                --wp--preset--spacing--20: 0.44rem;
+                --wp--preset--spacing--30: 0.67rem;
+                --wp--preset--spacing--40: 1rem;
+                --wp--preset--spacing--50: 1.5rem;
+                --wp--preset--spacing--60: 2.25rem;
+                --wp--preset--spacing--70: 3.38rem;
+                --wp--preset--spacing--80: 5.06rem;
+                --wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);
+                --wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);
+                --wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);
+                --wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);
+                --wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);
+            }
+
+            :where(.is-layout-flex) {
+                gap: 0.5em;
+            }
+
+            :where(.is-layout-grid) {
+                gap: 0.5em;
+            }
+
+            body .is-layout-flow > .alignleft {
+                float: left;
+                margin-inline-start: 0;margin-inline-end: 2em;}
+
+            body .is-layout-flow > .alignright {
+                float: right;
+                margin-inline-start: 2em;margin-inline-end: 0;}
+
+            body .is-layout-flow > .aligncenter {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            body .is-layout-constrained > .alignleft {
+                float: left;
+                margin-inline-start: 0;margin-inline-end: 2em;}
+
+            body .is-layout-constrained > .alignright {
+                float: right;
+                margin-inline-start: 2em;margin-inline-end: 0;}
+
+            body .is-layout-constrained > .aligncenter {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            body .is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+                max-width: var(--wp--style--global--content-size);
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            body .is-layout-constrained > .alignwide {
+                max-width: var(--wp--style--global--wide-size);
+            }
+
+            body .is-layout-flex {
+                display: flex;
+            }
+
+            body .is-layout-flex {
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+            body .is-layout-flex > * {
+                margin: 0;
+            }
+
+            body .is-layout-grid {
+                display: grid;
+            }
+
+            body .is-layout-grid > * {
+                margin: 0;
+            }
+
+            :where(.wp-block-columns.is-layout-flex) {
+                gap: 2em;
+            }
+
+            :where(.wp-block-columns.is-layout-grid) {
+                gap: 2em;
+            }
+
+            :where(.wp-block-post-template.is-layout-flex) {
+                gap: 1.25em;
+            }
+
+            :where(.wp-block-post-template.is-layout-grid) {
+                gap: 1.25em;
+            }
+
+            .has-black-color {
+                color: var(--wp--preset--color--black) !important;
+            }
+
+            .has-cyan-bluish-gray-color {
+                color: var(--wp--preset--color--cyan-bluish-gray) !important;
+            }
+
+            .has-white-color {
+                color: var(--wp--preset--color--white) !important;
+            }
+
+            .has-pale-pink-color {
+                color: var(--wp--preset--color--pale-pink) !important;
+            }
+
+            .has-vivid-red-color {
+                color: var(--wp--preset--color--vivid-red) !important;
+            }
+
+            .has-luminous-vivid-orange-color {
+                color: var(--wp--preset--color--luminous-vivid-orange) !important;
+            }
+
+            .has-luminous-vivid-amber-color {
+                color: var(--wp--preset--color--luminous-vivid-amber) !important;
+            }
+
+            .has-light-green-cyan-color {
+                color: var(--wp--preset--color--light-green-cyan) !important;
+            }
+
+            .has-vivid-green-cyan-color {
+                color: var(--wp--preset--color--vivid-green-cyan) !important;
+            }
+
+            .has-pale-cyan-blue-color {
+                color: var(--wp--preset--color--pale-cyan-blue) !important;
+            }
+
+            .has-vivid-cyan-blue-color {
+                color: var(--wp--preset--color--vivid-cyan-blue) !important;
+            }
+
+            .has-vivid-purple-color {
+                color: var(--wp--preset--color--vivid-purple) !important;
+            }
+
+            .has-black-background-color {
+                background-color: var(--wp--preset--color--black) !important;
+            }
+
+            .has-cyan-bluish-gray-background-color {
+                background-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+            }
+
+            .has-white-background-color {
+                background-color: var(--wp--preset--color--white) !important;
+            }
+
+            .has-pale-pink-background-color {
+                background-color: var(--wp--preset--color--pale-pink) !important;
+            }
+
+            .has-vivid-red-background-color {
+                background-color: var(--wp--preset--color--vivid-red) !important;
+            }
+
+            .has-luminous-vivid-orange-background-color {
+                background-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+            }
+
+            .has-luminous-vivid-amber-background-color {
+                background-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+            }
+
+            .has-light-green-cyan-background-color {
+                background-color: var(--wp--preset--color--light-green-cyan) !important;
+            }
+
+            .has-vivid-green-cyan-background-color {
+                background-color: var(--wp--preset--color--vivid-green-cyan) !important;
+            }
+
+            .has-pale-cyan-blue-background-color {
+                background-color: var(--wp--preset--color--pale-cyan-blue) !important;
+            }
+
+            .has-vivid-cyan-blue-background-color {
+                background-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+            }
+
+            .has-vivid-purple-background-color {
+                background-color: var(--wp--preset--color--vivid-purple) !important;
+            }
+
+            .has-black-border-color {
+                border-color: var(--wp--preset--color--black) !important;
+            }
+
+            .has-cyan-bluish-gray-border-color {
+                border-color: var(--wp--preset--color--cyan-bluish-gray) !important;
+            }
+
+            .has-white-border-color {
+                border-color: var(--wp--preset--color--white) !important;
+            }
+
+            .has-pale-pink-border-color {
+                border-color: var(--wp--preset--color--pale-pink) !important;
+            }
+
+            .has-vivid-red-border-color {
+                border-color: var(--wp--preset--color--vivid-red) !important;
+            }
+
+            .has-luminous-vivid-orange-border-color {
+                border-color: var(--wp--preset--color--luminous-vivid-orange) !important;
+            }
+
+            .has-luminous-vivid-amber-border-color {
+                border-color: var(--wp--preset--color--luminous-vivid-amber) !important;
+            }
+
+            .has-light-green-cyan-border-color {
+                border-color: var(--wp--preset--color--light-green-cyan) !important;
+            }
+
+            .has-vivid-green-cyan-border-color {
+                border-color: var(--wp--preset--color--vivid-green-cyan) !important;
+            }
+
+            .has-pale-cyan-blue-border-color {
+                border-color: var(--wp--preset--color--pale-cyan-blue) !important;
+            }
+
+            .has-vivid-cyan-blue-border-color {
+                border-color: var(--wp--preset--color--vivid-cyan-blue) !important;
+            }
+
+            .has-vivid-purple-border-color {
+                border-color: var(--wp--preset--color--vivid-purple) !important;
+            }
+
+            .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
+                background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;
+            }
+
+            .has-light-green-cyan-to-vivid-green-cyan-gradient-background {
+                background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;
+            }
+
+            .has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background {
+                background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;
+            }
+
+            .has-luminous-vivid-orange-to-vivid-red-gradient-background {
+                background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;
+            }
+
+            .has-very-light-gray-to-cyan-bluish-gray-gradient-background {
+                background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;
+            }
+
+            .has-cool-to-warm-spectrum-gradient-background {
+                background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;
+            }
+
+            .has-blush-light-purple-gradient-background {
+                background: var(--wp--preset--gradient--blush-light-purple) !important;
+            }
+
+            .has-blush-bordeaux-gradient-background {
+                background: var(--wp--preset--gradient--blush-bordeaux) !important;
+            }
+
+            .has-luminous-dusk-gradient-background {
+                background: var(--wp--preset--gradient--luminous-dusk) !important;
+            }
+
+            .has-pale-ocean-gradient-background {
+                background: var(--wp--preset--gradient--pale-ocean) !important;
+            }
+
+            .has-electric-grass-gradient-background {
+                background: var(--wp--preset--gradient--electric-grass) !important;
+            }
+
+            .has-midnight-gradient-background {
+                background: var(--wp--preset--gradient--midnight) !important;
+            }
+
+            .has-small-font-size {
+                font-size: var(--wp--preset--font-size--small) !important;
+            }
+
+            .has-medium-font-size {
+                font-size: var(--wp--preset--font-size--medium) !important;
+            }
+
+            .has-large-font-size {
+                font-size: var(--wp--preset--font-size--large) !important;
+            }
+
+            .has-x-large-font-size {
+                font-size: var(--wp--preset--font-size--x-large) !important;
+            }
+
+            .wp-block-navigation a:where(:not(.wp-element-button)) {
+                color: inherit;
+            }
+
+            :where(.wp-block-post-template.is-layout-flex) {
+                gap: 1.25em;
+            }
+
+            :where(.wp-block-post-template.is-layout-grid) {
+                gap: 1.25em;
+            }
+
+            :where(.wp-block-columns.is-layout-flex) {
+                gap: 2em;
+            }
+
+            :where(.wp-block-columns.is-layout-grid) {
+                gap: 2em;
+            }
+
+            .wp-block-pullquote {
+                font-size: 1.5em;
+                line-height: 1.6;
+            }
+        </style>
+        <link rel='stylesheet' id='rs-plugin-settings-css' href='https://knoxss.me/wp-content/plugins/revslider/public/assets/css/rs6.css?ver=6.2.23' type='text/css' media='all'/>
+        <style id='rs-plugin-settings-inline-css' type='text/css'>
+            #rs-demo-id {
+            }
+        </style>
+        <link rel='stylesheet' id='wpsm_test_b_bootstrap-front-css' href='https://knoxss.me/wp-content/plugins/testimonial-builder/assets/css/bootstrap-front.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='wpsm_test_b_style-1-css' href='https://knoxss.me/wp-content/plugins/testimonial-builder/assets/css/style-1.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='wpsm_test_b_style-2-css' href='https://knoxss.me/wp-content/plugins/testimonial-builder/assets/css/style-2.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='wpsm_test_b_owl_carousel_min_css-css' href='https://knoxss.me/wp-content/plugins/testimonial-builder/assets/css/owl.carousel.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='tetsuo-edge-default-style-css' href='https://knoxss.me/wp-content/themes/tetsuo/style.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='tetsuo-edge-modules-css' href='https://knoxss.me/wp-content/themes/tetsuo/assets/css/modules.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <style id='tetsuo-edge-modules-inline-css' type='text/css'>
+            .page-id-1990 .edgtf-content .edgtf-content-inner > .edgtf-container > .edgtf-container-inner, .page-id-1990 .edgtf-content .edgtf-content-inner > .edgtf-full-width > .edgtf-full-width-inner {
+                padding: 0 0 0 0;
+            }
+
+            .page-id-1990 .edgtf-content .edgtf-content-inner > .edgtf-container > .edgtf-container-inner, .page-id-1990 .edgtf-content .edgtf-content-inner > .edgtf-full-width > .edgtf-full-width-inner {
+                padding: 0 0 0 0;
+            }
+
+            .page-id-1990 .edgtf-page-header .edgtf-vertical-align-containers, .page-id-1990 .edgtf-top-bar .edgtf-vertical-align-containers {
+                padding-left: 4.5%;
+                padding-right: 4.5%;
+            }
+
+            .page-id-1990 .edgtf-page-header .edgtf-menu-area {
+                background-color: rgba(0, 0, 0, 0);
+                height: 110px !important;
+            }
+
+            .page-id-1990 .edgtf-page-header .edgtf-logo-area {
+                background-color: rgba(0, 0, 0, 0);
+            }
+        </style>
+        <link rel='stylesheet' id='edgtf-dripicons-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/dripicons/dripicons.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='edgtf-font_elegant-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/elegant-icons/style.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='edgtf-font_awesome-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/font-awesome/css/fontawesome-all.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='edgtf-ion_icons-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/ion-icons/css/ionicons.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='edgtf-linea_icons-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/linea-icons/style.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='edgtf-linear_icons-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/linear-icons/style.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='edgtf-simple_line_icons-css' href='https://knoxss.me/wp-content/themes/tetsuo/framework/lib/icons-pack/simple-line-icons/simple-line-icons.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='mediaelement-css' href='https://knoxss.me/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17' type='text/css' media='all'/>
+        <link rel='stylesheet' id='wp-mediaelement-css' href='https://knoxss.me/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='tetsuo-edge-modules-responsive-css' href='https://knoxss.me/wp-content/themes/tetsuo/assets/css/modules-responsive.min.css?ver=6.4.3' type='text/css' media='all'/>
+        <link rel='stylesheet' id='tetsuo-edge-google-fonts-css' href='https://fonts.googleapis.com/css?family=Rajdhani%3A300%2C400%2C600%2C700%7CRoboto+Condensed%3A300%2C400%2C600%2C700%7CAnton%3A300%2C400%2C600%2C700&#038;subset=latin-ext&#038;ver=1.0.0' type='text/css' media='all'/>
+        <link rel='stylesheet' id='js_composer_front-css' href='https://knoxss.me/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=6.4.1' type='text/css' media='all'/>
+        <link rel='stylesheet' id='rpt-css' href='https://knoxss.me/wp-content/plugins/dk-pricr-responsive-pricing-table/inc/css/rpt_style.min.css?ver=5.1.11' type='text/css' media='all'/>
+        <link rel='stylesheet' id='ws-plugin--s2member-css' href='https://knoxss.me/wp-content/plugins/s2member/s2member-o.php?ws_plugin__s2member_css=1&#038;qcABC=1&#038;ver=240218-230815-251561029' type='text/css' media='all'/>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/revslider/public/assets/js/rbtools.min.js?ver=6.2.23" id="tp-tools-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/revslider/public/assets/js/rs6.min.js?ver=6.2.23" id="revmin-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/testimonial-builder/assets/js/owl.carousel.min.js?ver=1" id="wpsm_test_b_owl.carousel.min.js-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/dk-pricr-responsive-pricing-table/inc/js/rpt.min.js?ver=5.1.11" id="rpt-js"></script>
+        <link rel="https://api.w.org/" href="https://knoxss.me/index.php?rest_route=/"/>
+        <link rel="alternate" type="application/json" href="https://knoxss.me/index.php?rest_route=/wp/v2/pages/1990"/>
+        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://knoxss.me/xmlrpc.php?rsd"/>
+        <meta name="generator" content="WordPress 6.4.3"/>
+        <link rel="canonical" href="https://knoxss.me/"/>
+        <link rel='shortlink' href='https://knoxss.me/'/>
+        <link rel="alternate" type="application/json+oembed" href="https://knoxss.me/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=https%3A%2F%2Fknoxss.me%2F"/>
+        <link rel="alternate" type="text/xml+oembed" href="https://knoxss.me/index.php?rest_route=%2Foembed%2F1.0%2Fembed&#038;url=https%3A%2F%2Fknoxss.me%2F&#038;format=xml"/>
+        <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+        <meta name="generator" content="Powered by Slider Revolution 6.2.23 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface."/>
+        <link rel="icon" href="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch.gif" sizes="32x32"/>
+        <link rel="icon" href="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch.gif" sizes="192x192"/>
+        <link rel="apple-touch-icon" href="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch.gif"/>
+        <meta name="msapplication-TileImage" content="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch.gif"/>
+        <script type="text/javascript">
+            function setREVStartSize(e) {
+                //window.requestAnimationFrame(function() {				 
+                window.RSIW = window.RSIW === undefined ? window.innerWidth : window.RSIW;
+                window.RSIH = window.RSIH === undefined ? window.innerHeight : window.RSIH;
+                try {
+                    var pw = document.getElementById(e.c).parentNode.offsetWidth, newh;
+                    pw = pw === 0 || isNaN(pw) ? window.RSIW : pw;
+                    e.tabw = e.tabw === undefined ? 0 : parseInt(e.tabw);
+                    e.thumbw = e.thumbw === undefined ? 0 : parseInt(e.thumbw);
+                    e.tabh = e.tabh === undefined ? 0 : parseInt(e.tabh);
+                    e.thumbh = e.thumbh === undefined ? 0 : parseInt(e.thumbh);
+                    e.tabhide = e.tabhide === undefined ? 0 : parseInt(e.tabhide);
+                    e.thumbhide = e.thumbhide === undefined ? 0 : parseInt(e.thumbhide);
+                    e.mh = e.mh === undefined || e.mh == "" || e.mh === "auto" ? 0 : parseInt(e.mh, 0);
+                    if (e.layout === "fullscreen" || e.l === "fullscreen")
+                        newh = Math.max(e.mh, window.RSIH);
+                    else {
+                        e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+                        for (var i in e.rl)
+                            if (e.gw[i] === undefined || e.gw[i] === 0)
+                                e.gw[i] = e.gw[i - 1];
+                        e.gh = e.el === undefined || e.el === "" || (Array.isArray(e.el) && e.el.length == 0) ? e.gh : e.el;
+                        e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+                        for (var i in e.rl)
+                            if (e.gh[i] === undefined || e.gh[i] === 0)
+                                e.gh[i] = e.gh[i - 1];
+
+                        var nl = new Array(e.rl.length), ix = 0, sl;
+                        e.tabw = e.tabhide >= pw ? 0 : e.tabw;
+                        e.thumbw = e.thumbhide >= pw ? 0 : e.thumbw;
+                        e.tabh = e.tabhide >= pw ? 0 : e.tabh;
+                        e.thumbh = e.thumbhide >= pw ? 0 : e.thumbh;
+                        for (var i in e.rl)
+                            nl[i] = e.rl[i] < window.RSIW ? 0 : e.rl[i];
+                        sl = nl[0];
+                        for (var i in nl)
+                            if (sl > nl[i] && nl[i] > 0) {
+                                sl = nl[i];
+                                ix = i;
+                            }
+                        var m = pw > (e.gw[ix] + e.tabw + e.thumbw) ? 1 : (pw - (e.tabw + e.thumbw)) / (e.gw[ix]);
+                        newh = (e.gh[ix] * m) + (e.tabh + e.thumbh);
+                    }
+                    if (window.rs_init_css === undefined)
+                        window.rs_init_css = document.head.appendChild(document.createElement("style"));
+                    document.getElementById(e.c).height = newh + "px";
+                    window.rs_init_css.innerHTML += "#" + e.c + "_wrapper { height: " + newh + "px }";
+                } catch (e) {
+                    console.log("Failure at Presize of Slider:" + e)
+                }
+                //});
+            }
+            ;</script>
+        <style type="text/css" data-type="vc_custom-css">
+            @media only screen and (min-width: 1400px) and (max-width: 1600px) {
+                #slide-10-layer-18, #slide-10-layer-17 {
+                    margin-left: 244px !important;
+                }
+            }
+
+            @media only screen and (min-width: 1300px) and (max-width: 1399px) {
+                #slide-10-layer-18, #slide-10-layer-17 {
+                    margin-left: 10px !important;
+                }
+            }
+
+            @media only screen and (min-width: 1200px) and (max-width: 1299px) {
+                #slide-10-layer-18, #slide-10-layer-17 {
+                    margin-left: 135px !important;
+                }
+            }
+        </style>
+        <style type="text/css" data-type="vc_shortcodes-custom-css">
+            .vc_custom_1618253108134 {
+                padding-bottom: 5px !important;
+            }
+
+            .vc_custom_1618263959973 {
+                padding-bottom: 5px !important;
+            }
+
+            .vc_custom_1618263959973 {
+                padding-bottom: 5px !important;
+            }
+
+            .vc_custom_1618264155251 {
+                margin-top: -18% !important;
+            }
+
+            .vc_custom_1618264155251 {
+                margin-top: -18% !important;
+            }
+        </style>
+        <noscript>
+            <style>
+                .wpb_animate_when_almost_visible {
+                    opacity: 1;
+                }
+            </style>
+        </noscript>
+        <!-- START - Open Graph and Twitter Card Tags 3.3.2 -->
+        <!-- Facebook Open Graph -->
+        <meta property="og:locale" content="en_US"/>
+        <meta property="og:site_name" content="KNOXSS"/>
+        <meta property="og:title" content="Main"/>
+        <meta property="og:url" content="https://knoxss.me"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:description" content="The State of The Art in XSS Testing.
+KNOXSS detects and proves with a popup 50+ XSS cases."/>
+        <meta property="og:image" content="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-UI-2024-Popup.png"/>
+        <meta property="og:image:url" content="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-UI-2024-Popup.png"/>
+        <meta property="og:image:secure_url" content="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-UI-2024-Popup.png"/>
+        <!-- Google+ / Schema.org -->
+        <!-- Twitter Cards -->
+        <meta name="twitter:title" content="Main"/>
+        <meta name="twitter:url" content="https://knoxss.me"/>
+        <meta name="twitter:description" content="The State of The Art in XSS Testing.
+KNOXSS detects and proves with a popup 50+ XSS cases."/>
+        <meta name="twitter:image" content="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-UI-2024-Popup.png"/>
+        <meta name="twitter:card" content="summary_large_image"/>
+        <!-- SEO -->
+        <!-- Misc. tags -->
+        <!-- is_singular -->
+        <!-- END - Open Graph and Twitter Card Tags 3.3.2 -->
+    </head>
+    <body class="home page-template page-template-full-width page-template-full-width-php page page-id-1990 tetsuo-core-1.1.1 tetsuo-ver-1.4 edgtf-fixed-video-background edgtf-fvb-animate-overlay edgtf-grid-1300 edgtf-content-is-behind-header edgtf-empty-google-api edgtf-wide-dropdown-menu-content-in-grid edgtf-animated-logo edgtf-menu-split-animation edgtf-no-behavior edgtf-dropdown-animate-height edgtf-header-standard edgtf-menu-area-shadow-disable edgtf-menu-area-in-grid-shadow-disable edgtf-menu-area-border-disable edgtf-menu-area-in-grid-border-disable edgtf-logo-area-border-disable edgtf-logo-area-in-grid-border-disable edgtf-header-vertical-shadow-disable edgtf-side-menu-slide-from-right edgtf-default-mobile-header edgtf-sticky-up-mobile-header edgtf-fullscreen-search edgtf-search-fade wpb-js-composer js-comp-ver-6.4.1 vc_responsive" itemscope itemtype="http://schema.org/WebPage">
+        <section class="edgtf-side-menu">
+            <a class="edgtf-close-side-menu edgtf-close-side-menu-svg-path" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.928px" height="30.928px" viewBox="0 0 30.928 30.928" enable-background="new 0 0 30.928 30.928" xml:space="preserve">
+                    <rect x="13.978" y="-4.882" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.4096 15.475)" fill="#231F20" width="2.995" height="40.713"></rect>
+                    <rect x="5.187" y="16.312" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -5.749 46.1529)" fill="#231F20" width="2.995" height="15.911"></rect>
+                    <rect x="22.77" y="-1.271" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 36.7002 28.5699)" fill="#231F20" width="2.995" height="15.911"></rect>
+                </svg>
+            </a>
+            <div id="media_image-3" class="widget edgtf-sidearea widget_media_image">
+                <img width="212" height="73" src="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch-footer.gif" class="image wp-image-2501  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async"/>
+            </div>
+            <div id="text-7" class="widget edgtf-sidearea widget_text">
+                <div class="textwidget">
+                    <h6 style="text-align: center;">
+                        By Brute Logic<br/>Research &amp;Development in Offensive Security.
+                    </h6>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+            <div class="widget edgtf-separator-widget">
+                <div class="edgtf-separator-holder clearfix  edgtf-separator-center edgtf-separator-normal">
+                    <div class="edgtf-separator" style="border-color: #020202;border-style: solid;width: 2px;border-bottom-width: 0px;margin: 10px 0 10px"></div>
+                </div>
+            </div>
+        </section>
+        <div class="edgtf-wrapper">
+            <div class="edgtf-wrapper-inner">
+                <div class="edgtf-fullscreen-search-holder">
+                    <a class="edgtf-search-close edgtf-search-close-svg-path" href="javascript:void(0)">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30.928px" height="30.928px" viewBox="0 0 30.928 30.928" enable-background="new 0 0 30.928 30.928" xml:space="preserve">
+                            <rect x="13.978" y="-4.882" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -6.4096 15.475)" fill="#231F20" width="2.995" height="40.713"></rect>
+                            <rect x="5.187" y="16.312" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 -5.749 46.1529)" fill="#231F20" width="2.995" height="15.911"></rect>
+                            <rect x="22.77" y="-1.271" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 36.7002 28.5699)" fill="#231F20" width="2.995" height="15.911"></rect>
+                        </svg>
+                    </a>
+                    <div class="edgtf-fullscreen-search-table">
+                        <div class="edgtf-fullscreen-search-cell">
+                            <div class="edgtf-fullscreen-search-inner">
+                                <form action="https://knoxss.me/" class="edgtf-fullscreen-search-form" method="get">
+                                    <div class="edgtf-form-holder">
+                                        <div class="edgtf-form-holder-inner">
+                                            <div class="edgtf-field-holder">
+                                                <input type="text" placeholder="Search_" name="s" class="edgtf-search-field" autocomplete="off"/>
+                                            </div>
+                                            <button type="submit" class="edgtf-search-submit edgtf-search-submit-svg-path">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18.844px" height="18.875px" viewBox="0 0 18.844 18.875" enable-background="new 0 0 18.844 18.875" xml:space="preserve">
+                                                    <path fill="#231F20" d="M18.844,16.625l-4.323-4.323c0.835-1.255,1.323-2.76,1.323-4.38C15.844,3.547,12.297,0,7.922,0
+	S0,3.547,0,7.922s3.547,7.922,7.922,7.922c1.648,0,3.179-0.504,4.447-1.366l4.225,4.397L18.844,16.625z M2.5,7.922
+	C2.5,4.932,4.932,2.5,7.922,2.5s5.422,2.432,5.422,5.422s-2.432,5.422-5.422,5.422S2.5,10.912,2.5,7.922z"></path>
+                                                </svg>
+                                            </button>
+                                            <div class="edgtf-line"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <header class="edgtf-page-header">
+                    <div class="edgtf-menu-area edgtf-menu-right">
+                        <div class="edgtf-vertical-align-containers">
+                            <div class="edgtf-position-left">
+                                <!--
+				 -->
+                                <div class="edgtf-position-left-inner">
+                                    <div class="edgtf-logo-wrapper">
+                                        <a itemprop="url" href="https://knoxss.me/">
+                                            <span class="edgtf-logo-text" data-text="KNOXSS">KNOXSS                </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="edgtf-position-right">
+                                <!--
+				 -->
+                                <div class="edgtf-position-right-inner">
+                                    <nav class="edgtf-main-menu edgtf-drop-down edgtf-default-nav">
+                                        <ul id="menu-mymenu" class="clearfix">
+                                            <li id="nav-menu-item-2555" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1990 current_page_item edgtf-active-item narrow">
+                                                <a href="https://knoxss.me/" class=" current ">
+                                                    <span class="item_outer">
+                                                        <span class="item_text">Home</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li id="nav-menu-item-2561" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                                <a href="https://knoxss.me/?page_id=1970" class="">
+                                                    <span class="item_outer">
+                                                        <span class="item_text">About</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li id="nav-menu-item-2567" class="menu-item menu-item-type-post_type menu-item-object-page  narrow">
+                                                <a href="https://knoxss.me/?page_id=1974" class="">
+                                                    <span class="item_outer">
+                                                        <span class="item_text">Signup</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li id="nav-menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom  narrow">
+                                                <a href="https://knoxss.me/wp-login.php" class="">
+                                                    <span class="item_outer">
+                                                        <span class="item_text">Login</span>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                    <a class="edgtf-search-opener edgtf-icon-has-hover edgtf-search-opener-svg-path" href="javascript:void(0)">
+                                        <span class="edgtf-search-opener-wrapper">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="18.844px" height="18.875px" viewBox="0 0 18.844 18.875" enable-background="new 0 0 18.844 18.875" xml:space="preserve">
+                                                <path fill="#231F20" d="M18.844,16.625l-4.323-4.323c0.835-1.255,1.323-2.76,1.323-4.38C15.844,3.547,12.297,0,7.922,0
+	S0,3.547,0,7.922s3.547,7.922,7.922,7.922c1.648,0,3.179-0.504,4.447-1.366l4.225,4.397L18.844,16.625z M2.5,7.922
+	C2.5,4.932,4.932,2.5,7.922,2.5s5.422,2.432,5.422,5.422s-2.432,5.422-5.422,5.422S2.5,10.912,2.5,7.922z"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a class="edgtf-side-menu-button-opener edgtf-icon-has-hover edgtf-side-menu-button-opener-svg-path" href="javascript:void(0)">
+                                        <span class="edgtf-side-menu-icon">
+                                            <svg class="edgtf-tetsuo-burger" x="0px" y="0px" width="35.995px" height="30.996px" viewBox="0 0 35.995 30.996" enable-background="new 0 0 35.995 30.996">
+                                                <path fill="#231F20" d="M13,3v4H3V3H13 M16,0H0v10h16V0L16,0z"/>
+                                                <rect width="15.938" height="3"></rect>
+                                                <path fill="#231F20" d="M32.995,3v4h-10V3H32.995 M35.995,0h-16v10h16V0L35.995,0z"/>
+                                                <rect width="15.938" height="3"></rect>
+                                                <path fill="#231F20" d="M13,23.996v4H3v-4H13 M16,20.996H0v10h16V20.996L16,20.996z"/>
+                                                <rect width="15.938" height="3"></rect>
+                                                <polygon fill="#231F20" points="35.995,14 0,14 0,17 35.995,17 35.995,14 "/>
+                                                <rect width="15.938" height="3"></rect>
+                                                <path fill="#231F20" d="M32.995,23.996v4h-10v-4H32.995 M35.995,20.996h-16v10h16V20.996L35.995,20.996z"/>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <a class="edgtf-website-song edgtf-track-paused">
+                    <audio src="https://knoxss.me/wp-content/uploads/2018/09/Web-song.mp3"></audio>
+                    <div class="edgtf-song-play-icon ion-play"></div>
+                    <div class="edgtf-equalizer">
+                        <div id="edgtf-equalizer-bar-1" class="edgtf-equalizer-bar noAnim"></div>
+                        <div id="edgtf-equalizer-bar-2" class="edgtf-equalizer-bar noAnim"></div>
+                        <div id="edgtf-equalizer-bar-3" class="edgtf-equalizer-bar noAnim"></div>
+                    </div>
+                </a>
+                <header class="edgtf-mobile-header">
+                    <div class="edgtf-mobile-header-inner">
+                        <div class="edgtf-mobile-header-holder">
+                            <div class="edgtf-grid">
+                                <div class="edgtf-vertical-align-containers">
+                                    <div class="edgtf-vertical-align-containers">
+                                        <div class="edgtf-mobile-menu-opener edgtf-mobile-menu-opener-svg-path">
+                                            <a href="javascript:void(0)">
+                                                <span class="edgtf-mobile-menu-icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="36" height="17" viewBox="0 0 36 17" enable-background="new 0 0 36 17" xml:space="preserve">
+                                                        <rect width="16" height="3"></rect>
+                                                        <rect y="14" width="16" height="3"></rect>
+                                                        <rect x="20" y="14" width="16" height="3"></rect>
+                                                        <rect x="20" width="16" height="3"></rect>
+                                                        <rect y="7" width="36" height="3"></rect>
+                                                    </svg>
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div class="edgtf-position-center">
+                                            <!--
+						 -->
+                                            <div class="edgtf-position-center-inner">
+                                                <div class="edgtf-mobile-logo-wrapper">
+                                                    <a itemprop="url" href="https://knoxss.me/">
+                                                        <span class="edgtf-mobile-logo-text">KNOXSS            </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="edgtf-position-right">
+                                            <!--
+						 -->
+                                            <div class="edgtf-position-right-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <nav class="edgtf-mobile-nav" role="navigation" aria-label="Mobile Menu">
+                            <div class="edgtf-grid">
+                                <ul id="menu-mymenu-1" class="">
+                                    <li id="mobile-menu-item-2555" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1990 current_page_item edgtf-active-item">
+                                        <a href="https://knoxss.me/" class=" current ">
+                                            <span>Home</span>
+                                        </a>
+                                    </li>
+                                    <li id="mobile-menu-item-2561" class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                        <a href="https://knoxss.me/?page_id=1970" class="">
+                                            <span>About</span>
+                                        </a>
+                                    </li>
+                                    <li id="mobile-menu-item-2567" class="menu-item menu-item-type-post_type menu-item-object-page ">
+                                        <a href="https://knoxss.me/?page_id=1974" class="">
+                                            <span>Signup</span>
+                                        </a>
+                                    </li>
+                                    <li id="mobile-menu-item-31" class="menu-item menu-item-type-custom menu-item-object-custom ">
+                                        <a href="https://knoxss.me/wp-login.php" class="">
+                                            <span>Login</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+                <a id='edgtf-back-to-top' href='#'>
+                    <span class="edgtf-icon-stack">
+                        <i class="edgtf-icon-ion-icon ion-android-arrow-dropup "></i>
+                    </span>
+                    <span class="edgtf-btt-text">Back to Top</span>
+                </a>
+                <div class="edgtf-content" style="margin-top: -110px">
+                    <div class="edgtf-content-inner">
+                        <div class="edgtf-full-width">
+                            <div class="edgtf-full-width-inner">
+                                <div class="edgtf-grid-row">
+                                    <div class="edgtf-page-content-holder edgtf-grid-col-12">
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="wpb_revslider_element wpb_content_element">
+                                                            <!-- START Landing REVOLUTION SLIDER 6.2.23 -->
+                                                            <p class="rs-p-wp-fix"></p>
+                                                            <rs-module-wrap id="rev_slider_2_1_wrapper" data-source="gallery" style="background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;background-image:url(http://tetsuo.edge-themes.com/wp-content/uploads/2018/08/landing-slider-1.gif);background-repeat:no-repeat;background-size:cover;background-position:center center;">
+                                                                <rs-module id="rev_slider_2_1" style="" data-version="6.2.23">
+                                                                    <rs-slides>
+                                                                        <rs-slide data-key="rs-3" data-title="Slide" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;" data-firstanim="t:fade;s:300;sl:7;">
+                                                                            <img decoding="async" src="//knoxss.me/wp-content/uploads/revslider/landing-slider.gif" title="Main" data-parallax="off" class="rev-slidebg" data-no-retina>
+                                                                            <!--
+							-->
+                                                                            <rs-layer id="slider-2-slide-3-layer-25" data-type="text" data-xy="x:c;y:m;yo:4px,4px,20px,5px;" data-text="w:nowrap,nowrap,nowrap,normal;s:17;l:22,22,22,25;ls:25px,25px,18px,18px;fw:600;a:inherit,inherit,inherit,center;" data-dim="w:auto,auto,auto,291px;h:auto,auto,auto,108px;" data-basealign="slide" data-rsp_bd="off" data-frame_0="o:1;" data-frame_0_words="y:50px;o:0;" data-frame_1="e:easeOutExpo;st:500;sp:1500;sR:500;" data-frame_1_words="d:10;" data-frame_999="o:0;st:w;sR:2100;" style="z-index:5;font-family:Rajdhani;text-transform:uppercase;">State of the art in XSS Testing 
+							</rs-layer>
+                                                                            <!--
+
+							-->
+                                                                            <rs-layer id="slider-2-slide-3-layer-26" data-type="text" data-xy="x:c;xo:-8px,-8px,-8px,0;y:m;yo:78px,64px,93px,95px;" data-text="l:22;a:inherit;" data-rsp_bd="off" data-frame_0="sX:0.9;sY:0.9;" data-frame_1="st:1000;sp:1000;sR:1000;" data-frame_999="o:0;st:w;sR:2500;" style="z-index:6;font-family:Open Sans;">
+                                                                                <a itemprop="url" href="https://knoxss.me/?page_id=1974" target="_self" class="edgtf-btn edgtf-btn-medium edgtf-btn-outline">
+                                                                                    <span class="edgtf-btn-overlay"></span>
+                                                                                    <span class="edgtf-btn-text">SIGN UP</span>
+                                                                                </a>
+                                                                            </rs-layer>
+                                                                            <!--
+
+							-->
+                                                                            <rs-layer id="slider-2-slide-3-layer-37" data-type="image" data-xy="x:c;xo:5px,9px,9px,0;y:m;yo:-118px,-129px,-87px,-129px;" data-text="l:22;a:inherit;" data-dim="w:456px,380px,360px,280px;h:162px,133px,126px,98px;" data-basealign="slide" data-rsp_bd="off" data-frame_1="e:easeInOutBounce;sp:1200;" data-frame_999="o:0;st:w;sR:3300;" style="z-index:14;">
+                                                                                <img fetchpriority="high" decoding="async" src="//knoxss.me/wp-content/uploads/2021/04/knoxss-glitch.gif" width="456" height="162" data-no-retina>
+                                                                            </rs-layer>
+                                                                            <!--
+-->
+                                                                        </rs-slide>
+                                                                    </rs-slides>
+                                                                </rs-module>
+                                                                <script type="text/javascript">
+                                                                    setREVStartSize({
+                                                                        c: 'rev_slider_2_1',
+                                                                        rl: [1240, 1024, 778, 480],
+                                                                        el: [790, 600, 600, 720],
+                                                                        gw: [1100, 600, 800, 400],
+                                                                        gh: [790, 600, 600, 720],
+                                                                        type: 'standard',
+                                                                        justify: '',
+                                                                        layout: 'fullwidth',
+                                                                        mh: "0"
+                                                                    });
+                                                                    var revapi2, tpj;
+                                                                    function revinit_revslider21() {
+                                                                        jQuery(function() {
+                                                                            tpj = jQuery;
+                                                                            revapi2 = tpj("#rev_slider_2_1");
+                                                                            if (revapi2 == undefined || revapi2.revolution == undefined) {
+                                                                                revslider_showDoubleJqueryError("rev_slider_2_1");
+                                                                            } else {
+                                                                                revapi2.revolution({
+                                                                                    sliderLayout: "fullwidth",
+                                                                                    duration: 4500,
+                                                                                    visibilityLevels: "1240,1024,778,480",
+                                                                                    gridwidth: "1100,600,800,400",
+                                                                                    gridheight: "790,600,600,720",
+                                                                                    perspective: 600,
+                                                                                    perspectiveType: "local",
+                                                                                    editorheight: "790,600,600,720",
+                                                                                    responsiveLevels: "1240,1024,778,480",
+                                                                                    progressBar: {
+                                                                                        disableProgressBar: true
+                                                                                    },
+                                                                                    navigation: {
+                                                                                        onHoverStop: false
+                                                                                    },
+                                                                                    parallax: {
+                                                                                        levels: [5, 10, 15, 20, 25, 30, 35, 40, 45, 46, 47, 48, 49, 50, 51, 55],
+                                                                                        type: "mouse"
+                                                                                    },
+                                                                                    fallbacks: {
+                                                                                        allowHTML5AutoPlayOnAndroid: true
+                                                                                    },
+                                                                                });
+                                                                            }
+
+                                                                        });
+                                                                    }
+                                                                    // End of RevInitScript
+                                                                    var once_revslider21 = false;
+                                                                    if (document.readyState === "loading") {
+                                                                        document.addEventListener('readystatechange', function() {
+                                                                            if ((document.readyState === "interactive" || document.readyState === "complete") && !once_revslider21) {
+                                                                                once_revslider21 = true;
+                                                                                revinit_revslider21();
+                                                                            }
+                                                                        });
+                                                                    } else {
+                                                                        once_revslider21 = true;
+                                                                        revinit_revslider21();
+                                                                    }
+                                                                </script>
+                                                            </rs-module-wrap>
+                                                            <!-- END REVOLUTION SLIDER -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid vc_custom_1618253108134 edgtf-row-has-vertical-text">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                            <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-6493" data-1367-1600="95px 0 0 15%" data-1025-1366="90px 0 0 15%" data-769-1024="0 7%" data-681-768="0 6%" data-680="0 6%">
+                                                                <div class="edgtf-eh-item-inner">
+                                                                    <div class="edgtf-eh-item-content edgtf-eh-custom-6493" style="padding: 43px 0 0 16%">
+                                                                        <div class="edgtf-charts" data-type="radar" data-skin="light" data-no_of_used_datasets="2" data-dataset_1="32,29,31,28,30" data-dataset_2="28,28,27,29,28" data-point_group_labels="Confidence,Depth,Coverage,Speed,Reliability" data-point_group_colors="" data-dataset_1_label="KNOXSS" data-dataset_1_color="rgba(35,178,173,0.51)" data-dataset_2_label="Other Tools" data-dataset_2_color="rgba(254,87,20,0.51)" data-color_scheme="dataset" data-legend_position="right">
+                                                                            <canvas id="edgtf-charts-canvas-1202975086"></canvas>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-6 vc_col-md-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                            <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-3599" data-1367-1600="0 19% 0 9%" data-1025-1366="0 16% 0 7%" data-769-1024="12% 24% 0 24%" data-681-768="10% 18% 0 18%" data-680="25% 8% 0 8%">
+                                                                <div class="edgtf-eh-item-inner">
+                                                                    <div class="edgtf-eh-item-content edgtf-eh-custom-3599" style="padding: 0 30% 0 11%">
+                                                                        <div class="edgtf-section-title-holder  edgtf-st-standard edgtf-st-title-left edgtf-st-normal-space ">
+                                                                            <div class="edgtf-st-inner">
+                                                                                <h1 class="edgtf-st-title">CONFIDENCE BY DESIGN			</h1>
+                                                                                <div class="edgtf-separator-holder clearfix  edgtf-separator-left edgtf-separator-normal">
+                                                                                    <div class="edgtf-separator" style="border-color: #ffffff;border-style: solid;width: 80px;border-bottom-width: 7px;margin: 24px 0 10px 0px"></div>
+                                                                                </div>
+                                                                                <span class="edgtf-st-text">KNOXSS has a high level of confidence by design. It has almost zero false positive rate (since it has to pop the alert box to prove vulnerability) and low false negative rate regarding its XSS coverage. Its extensive list of covered XSS cases also makes it the best option out there for this kind of vulnerability.			</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="vc_empty_space" style="height: 45px">
+                                                                            <span class="vc_empty_space_inner"></span>
+                                                                        </div>
+                                                                        <a itemprop="url" href="https://knoxss.me/?page_id=1974" target="_self" class="edgtf-btn edgtf-btn-medium edgtf-btn-outline">
+                                                                            <span class="edgtf-btn-overlay"></span>
+                                                                            <span class="edgtf-btn-text">SIGN UP</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="edgtf-row-vertical-text-holder edgtf-row-vertical-text-align-left" style="left:5%">
+                                                <div class="edgtf-row-vertical-text-holder-inner">
+                                                    <span class="edgtf-row-vertical-text">FEATURES</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-text-marquee edgtf-tm-9367" style="color: rgba(255,255,255,0.04);font-size: 340px;font-weight: 700" data-item-class="edgtf-tm-9367" data-font-size-1024="300px" data-font-size-768="300px" data-font-size-680="180px" data-line-height-1024="300px" data-line-height-768="300px" data-line-height-680="180px">
+                                                            <span class="edgtf-marquee-element edgtf-original-text">KNOXSS RULES_</span>
+                                                            <span class="edgtf-marquee-element edgtf-aux-text">KNOXSS RULES_</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="edgtf-row-grid-section-wrapper edgtf-content-aligment-center">
+                                            <div class="edgtf-row-grid-section">
+                                                <div class="vc_row wpb_row vc_row-fluid vc_custom_1618263959973">
+                                                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                        <div class="vc_column-inner vc_custom_1618264155251">
+                                                            <div class="wpb_wrapper">
+                                                                <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                                    <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-2864" data-769-1024="0 0 20px 0" data-681-768="0 0 60px 0" data-680="0 0 60px 0">
+                                                                        <div class="edgtf-eh-item-inner">
+                                                                            <div class="edgtf-eh-item-content edgtf-eh-custom-2864">
+                                                                                <div class="edgtf-section-title-holder  edgtf-st-standard edgtf-st-title-left edgtf-st-normal-space ">
+                                                                                    <div class="edgtf-st-inner">
+                                                                                        <h2 class="edgtf-st-title">GAME CHANGER_			</h2>
+                                                                                        <span class="edgtf-st-text">Test with the smartest JavaScript injections ever.			</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                            <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-9388">
+                                                                <div class="edgtf-eh-item-inner">
+                                                                    <div class="edgtf-eh-item-content edgtf-eh-custom-9388" style="padding: 165px 0 0 0">
+                                                                        <div class="edgtf-scattered-images edgtf-si-left  edgtf-has-shadow edgtf-si-parallax-yes">
+                                                                            <div class="edgtf-si-images-holder">
+                                                                                <div class="edgtf-si-hero-image-holder" data-parallax="{&quot;y&quot;: -106, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="https://knoxss.me/?page_id=1974" target="_self">
+                                                                                        <div class="edgtf-si-hero-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-UI-2024.jpg" alt="KNOXSS-UI-2024">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="edgtf-si-aux-image-holder edgtf-si-aux-image-1" data-parallax="{&quot;y&quot;: 50, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-aux-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-UI-2024-Popup.png" alt="KNOXSS-UI-2024-Popup">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="edgtf-si-aux-image-holder edgtf-si-aux-image-2" data-parallax="{&quot;y&quot;: -74, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="https://knoxss.me/?page_id=1974" target="_self">
+                                                                                        <div class="edgtf-si-aux-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/loading-line.gif" alt="loading-line">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="edgtf-si-text-content-holder" data-parallax="{&quot;y&quot;: 50, &quot;smoothness&quot;: 20}">
+                                                                                <div class="edgtf-si-title-holder">
+                                                                                    <h2 class="edgtf-si-title">Superior Technology</h2>
+                                                                                </div>
+                                                                                <div class="edgtf-si-text-holder">
+                                                                                    <p class="edgtf-si-text">KNOXSS detects and proves XSS flaws automatically with little to no effort of the user. Just feed KNOXSS with your target URL and it will pop an alert box if it &#039;s exploitable according to its dozens of XSS covered cases.</p>
+                                                                                </div>
+                                                                                <div class="edgtf-si-button-holder">
+                                                                                    <div class="edgtf-si-button">
+                                                                                        <a itemprop="url" href="https://knoxss.me/?page_id=1974" target="_self" class="edgtf-btn edgtf-btn-medium edgtf-btn-outline">
+                                                                                            <span class="edgtf-btn-overlay"></span>
+                                                                                            <span class="edgtf-btn-text">SIGN UP</span>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                            <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-9194">
+                                                                <div class="edgtf-eh-item-inner">
+                                                                    <div class="edgtf-eh-item-content edgtf-eh-custom-9194" style="padding: 165px 0 0 0">
+                                                                        <div class="edgtf-scattered-images edgtf-si-left  edgtf-has-shadow edgtf-si-parallax-yes">
+                                                                            <div class="edgtf-si-images-holder">
+                                                                                <div class="edgtf-si-hero-image-holder" data-parallax="{&quot;y&quot;: -93, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-hero-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-bypass-testimony-e1707555060133.jpg" alt="KNOXSS-bypass-testimony">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="edgtf-si-aux-image-holder edgtf-si-aux-image-1" data-parallax="{&quot;y&quot;: 64, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-aux-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2021/04/knoxss-community-ack-1.jpeg" alt="knoxss-community-ack-1">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="edgtf-si-aux-image-holder edgtf-si-aux-image-2" data-parallax="{&quot;y&quot;: -76, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-aux-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-12k-bounty-e1707554936622.jpg" alt="KNOXSS-12k-bounty">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="edgtf-si-text-content-holder" data-parallax="{&quot;y&quot;: 64, &quot;smoothness&quot;: 20}">
+                                                                                <div class="edgtf-si-title-holder">
+                                                                                    <h2 class="edgtf-si-title">Community Acknowledgement</h2>
+                                                                                </div>
+                                                                                <div class="edgtf-si-text-holder">
+                                                                                    <p class="edgtf-si-text">KNOXSS is online for 7 years already and it &#039;s responsible for several success cases with thousands of PoCs. From bug hunters to penetration testers, KNOXSS was used by more than 18k users throughout this time.</p>
+                                                                                </div>
+                                                                                <div class="edgtf-si-button-holder">
+                                                                                    <div class="edgtf-si-button">
+                                                                                        <a itemprop="url" href="https://knoxss.me/?page_id=1974" target="_self" class="edgtf-btn edgtf-btn-medium edgtf-btn-outline">
+                                                                                            <span class="edgtf-btn-overlay"></span>
+                                                                                            <span class="edgtf-btn-text">SIGN UP</span>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                            <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-1389">
+                                                                <div class="edgtf-eh-item-inner">
+                                                                    <div class="edgtf-eh-item-content edgtf-eh-custom-1389" style="padding: 167px 0 0 0"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                            <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-3604">
+                                                                <div class="edgtf-eh-item-inner">
+                                                                    <div class="edgtf-eh-item-content edgtf-eh-custom-3604" style="padding: 165px 0 0 0">
+                                                                        <div class="edgtf-scattered-images edgtf-si-left  edgtf-has-shadow edgtf-si-parallax-yes">
+                                                                            <div class="edgtf-si-images-holder">
+                                                                                <div class="edgtf-si-hero-image-holder" data-parallax="{&quot;y&quot;: -110, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-hero-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/KNOXSS-Support-2-e1707558392674.jpg" alt="KNOXSS-Support-2">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="edgtf-si-aux-image-holder edgtf-si-aux-image-1" data-parallax="{&quot;y&quot;: 40, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-aux-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/Captura-de-tela-2024-02-10-055935.png" alt="Captura de tela 2024-02-10 055935">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div class="edgtf-si-aux-image-holder edgtf-si-aux-image-2" data-parallax="{&quot;y&quot;: -72, &quot;smoothness&quot;: 20}">
+                                                                                    <a href="" target="_self">
+                                                                                        <div class="edgtf-si-aux-inner-image-holder">
+                                                                                            <img decoding="async" src="https://knoxss.me/wp-content/uploads/2024/02/knoxss-outstanding-support-2-4x.jpg" alt="knoxss-outstanding-support-2-4x">
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="edgtf-si-text-content-holder" data-parallax="{&quot;y&quot;: 40, &quot;smoothness&quot;: 20}">
+                                                                                <div class="edgtf-si-title-holder">
+                                                                                    <h2 class="edgtf-si-title">Outstanding support</h2>
+                                                                                </div>
+                                                                                <div class="edgtf-si-text-holder">
+                                                                                    <p class="edgtf-si-text">KNOXSS service is able to offer fast technical support via X (former Twitter) chat sometimes in a matter of minutes. It &#039;s provided by knowledgeable people with experience and deep understanding of automated testing and Cross-Site Scripting.</p>
+                                                                                </div>
+                                                                                <div class="edgtf-si-button-holder">
+                                                                                    <div class="edgtf-si-button">
+                                                                                        <a itemprop="url" href="https://knoxss.me/?page_id=1974" target="_self" class="edgtf-btn edgtf-btn-medium edgtf-btn-outline">
+                                                                                            <span class="edgtf-btn-overlay"></span>
+                                                                                            <span class="edgtf-btn-text">SIGN UP</span>
+                                                                                        </a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="vc_empty_space" style="height: 50px">
+                                                            <span class="vc_empty_space_inner"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="edgtf-text-marquee edgtf-tm-6903" style="color: rgba(255,255,255,0.04);font-size: 340px;font-weight: 700" data-item-class="edgtf-tm-6903" data-font-size-1024="300px" data-font-size-768="300px" data-font-size-680="180px" data-line-height-1024="300px" data-line-height-768="300px" data-line-height-680="180px">
+                                                            <span class="edgtf-marquee-element edgtf-original-text">GAME CHANGER_</span>
+                                                            <span class="edgtf-marquee-element edgtf-aux-text">GAME CHANGER_</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="edgtf-row-grid-section-wrapper edgtf-content-aligment-center">
+                                            <div class="edgtf-row-grid-section">
+                                                <div class="vc_row wpb_row vc_row-fluid vc_custom_1618263959973">
+                                                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                        <div class="vc_column-inner vc_custom_1618264155251">
+                                                            <div class="wpb_wrapper">
+                                                                <div class="edgtf-elements-holder   edgtf-one-column  edgtf-responsive-mode-768 ">
+                                                                    <div class="edgtf-eh-item    " data-item-class="edgtf-eh-custom-4871" data-769-1024="0 0 20px 0" data-681-768="0 0 60px 0" data-680="0 0 60px 0">
+                                                                        <div class="edgtf-eh-item-inner">
+                                                                            <div class="edgtf-eh-item-content edgtf-eh-custom-4871">
+                                                                                <div class="edgtf-section-title-holder  edgtf-st-standard edgtf-st-title-left edgtf-st-normal-space ">
+                                                                                    <div class="edgtf-st-inner">
+                                                                                        <h2 class="edgtf-st-title">FUTURE IS HERE_			</h2>
+                                                                                        <span class="edgtf-st-text">Join the next revolution in offensive security tools.			</span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid edgtf-row-has-vertical-text">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="wpb_text_column wpb_content_element ">
+                                                            <div class="wpb_wrapper">
+                                                                <h4 style="text-align: center;">Testimonials</h4>
+                                                            </div>
+                                                        </div>
+                                                        <div class="vc_empty_space" style="height: 15px">
+                                                            <span class="vc_empty_space_inner"></span>
+                                                        </div>
+                                                        <div class="edgtf-row-grid-section-wrapper ">
+                                                            <div class="edgtf-row-grid-section">
+                                                                <div class="vc_row wpb_row vc_inner vc_row-fluid">
+                                                                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                                        <div class="vc_column-inner">
+                                                                            <div class="wpb_wrapper">
+                                                                                <div class="edgtf-testimonials-holder clearfix edgtf-testimonials-standard ">
+                                                                                    <div class="edgtf-testimonials edgtf-owl-slider" data-number-of-items="1" data-enable-loop="yes" data-enable-autoplay="yes" data-slider-speed="5000" data-slider-speed-animation="600" data-enable-navigation="yes" data-enable-pagination="yes">
+                                                                                        <div class="edgtf-testimonial-content" id="edgtf-testimonials-918">
+                                                                                            <div class="edgtf-testimonial-text-holder">
+                                                                                                <p class="edgtf-testimonial-text">&quot;You buy KNOXSS for ~$100 and by it [you] win $5000!&quot;</p>
+                                                                                                <h5 class="edgtf-testimonial-author">
+                                                                                                    <span class="edgtf-testimonials-author-name">Hussain Adnan - Security Analyst</span>
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="edgtf-testimonial-content" id="edgtf-testimonials-883">
+                                                                                            <div class="edgtf-testimonial-text-holder">
+                                                                                                <p class="edgtf-testimonial-text">&quot;I randomly opened a [Bug Bounty] program and activated the KNOXSS plugin... I started visiting web pages one by one and within two minutes, BOOOOMM!!!!&quot;</p>
+                                                                                                <h5 class="edgtf-testimonial-author">
+                                                                                                    <span class="edgtf-testimonials-author-name">Akshay Sharma - Blogger &amp;YouTuber</span>
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="edgtf-testimonial-content" id="edgtf-testimonials-882">
+                                                                                            <div class="edgtf-testimonial-text-holder">
+                                                                                                <p class="edgtf-testimonial-text">&quot;I have to say that Brute Logic &#039;s KNOXSS is the best XSS tool I have ever seen! I have just got rewarded with bounty on YesWeHack for DOM XSS.&quot;</p>
+                                                                                                <h5 class="edgtf-testimonial-author">
+                                                                                                    <span class="edgtf-testimonials-author-name">Mahmoud Osama - Bug Hunter</span>
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="edgtf-row-vertical-text-holder edgtf-row-vertical-text-align-right">
+                                                <div class="edgtf-row-vertical-text-holder-inner">
+                                                    <span class="edgtf-row-vertical-text">They Say</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="vc_empty_space" style="height: 15px">
+                                                            <span class="vc_empty_space_inner"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="vc_empty_space" style="height: 15px">
+                                                            <span class="vc_empty_space_inner"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="vc_empty_space" style="height: 15px">
+                                                            <span class="vc_empty_space_inner"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="vc_row wpb_row vc_row-fluid">
+                                            <div class="wpb_column vc_column_container vc_col-sm-12">
+                                                <div class="vc_column-inner">
+                                                    <div class="wpb_wrapper">
+                                                        <div class="vc_empty_space" style="height: 15px">
+                                                            <span class="vc_empty_space_inner"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- close div.content_inner -->
+                </div>
+                <!-- close div.content -->
+                <div class="edgtf-fixed-video-background-holder">
+                    <div class="edgtf-shader" style="background-color:rgba(19, 19, 19, 0.9)"></div>
+                    <video src="http://tetsuo.edge-themes.com/wp-content/uploads/2018/08/VIDEO-za-main-home.mp4" loop autoplay muted poster="http://tetsuo.edge-themes.com/wp-content/uploads/2018/08/freelancer-home-1.jpg"></video>
+                </div>
+                <footer class="edgtf-page-footer ">
+                    <div class="edgtf-footer-top-holder">
+                        <div class="edgtf-footer-top-inner edgtf-grid">
+                            <div class="edgtf-grid-row edgtf-footer-top-alignment-center">
+                                <div class="edgtf-column-content edgtf-grid-col-12">
+                                    <div id="media_image-2" class="widget edgtf-footer-column-1 widget_media_image">
+                                        <a href="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch-footer.gif">
+                                            <img width="212" height="73" src="https://knoxss.me/wp-content/uploads/2021/04/knoxss-glitch-footer.gif" class="image wp-image-2501  attachment-full size-full" alt="" style="max-width: 100%; height: auto;" decoding="async" loading="lazy"/>
+                                        </a>
+                                    </div>
+                                    <div id="text-3" class="widget edgtf-footer-column-1 widget_text">
+                                        <div class="textwidget">
+                                            <div class="footer-top-text">Accuracy is everything.</div>
+                                        </div>
+                                    </div>
+                                    <div id="text-4" class="widget edgtf-footer-column-1 widget_text">
+                                        <div class="textwidget">
+                                            <div class="footer-custom-menu">
+                                                <ul>
+                                                    <li>
+                                                        <a href="https://knoxss.me/?page_id=1987">FAQ &amp;CONTACT</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://knoxss.me/?page_id=164" target="_blank" rel="noopener">Terms of Service</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="https://knoxss.me/?page_id=162" target="_blank" rel="noopener">Privacy Policy</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="text-10" class="widget edgtf-footer-column-1 widget_text">
+                                        <div class="textwidget">
+                                            <p>
+                                                © 2024 <a href="https://brutelogic.com.br" target="_blank" rel="noopener">Brute Logic</a>
+                                                &#8211;All rights reserved.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- close div.edgtf-wrapper-inner  -->
+        </div>
+        <!-- close div.edgtf-wrapper -->
+        <script type="text/html" id="wpb-modifications"></script>
+        <link href="https://fonts.googleapis.com/css?family=Rajdhani:600%7COpen+Sans:400%7CRoboto:400" rel="stylesheet" property="stylesheet" media="all" type="text/css">
+        <script type="text/javascript">
+            if (typeof revslider_showDoubleJqueryError === "undefined") {
+                function revslider_showDoubleJqueryError(sliderID) {
+                    var err = "<div class='rs_error_message_box'>";
+                    err += "<div class='rs_error_message_oops'>Oops...</div>";
+                    err += "<div class='rs_error_message_content'>";
+                    err += "You have some jquery.js library include that comes after the Slider Revolution files js inclusion.<br>";
+                    err += "To fix this, you can:<br>&nbsp;&nbsp;&nbsp; 1. Set 'Module General Options' -> 'Advanced' -> 'jQuery & OutPut Filters' -> 'Put JS to Body' to on";
+                    err += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jQuery.js inclusion and remove it";
+                    err += "</div>";
+                    err += "</div>";
+                    var slider = document.getElementById(sliderID);
+                    slider.innerHTML = err;
+                    slider.style.display = "block";
+                }
+            }
+        </script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/jquery/ui/core.min.js?ver=1.13.2" id="jquery-ui-core-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/jquery/ui/tabs.min.js?ver=1.13.2" id="jquery-ui-tabs-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/jquery/ui/accordion.min.js?ver=1.13.2" id="jquery-ui-accordion-js"></script>
+        <script type="text/javascript" id="mediaelement-core-js-before">
+            /* <![CDATA[ */
+            var mejsL10n = {
+                "language": "en",
+                "strings": {
+                    "mejs.download-file": "Download File",
+                    "mejs.install-flash": "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/",
+                    "mejs.fullscreen": "Fullscreen",
+                    "mejs.play": "Play",
+                    "mejs.pause": "Pause",
+                    "mejs.time-slider": "Time Slider",
+                    "mejs.time-help-text": "Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.",
+                    "mejs.live-broadcast": "Live Broadcast",
+                    "mejs.volume-help-text": "Use Up\/Down Arrow keys to increase or decrease volume.",
+                    "mejs.unmute": "Unmute",
+                    "mejs.mute": "Mute",
+                    "mejs.volume-slider": "Volume Slider",
+                    "mejs.video-player": "Video Player",
+                    "mejs.audio-player": "Audio Player",
+                    "mejs.captions-subtitles": "Captions\/Subtitles",
+                    "mejs.captions-chapters": "Chapters",
+                    "mejs.none": "None",
+                    "mejs.afrikaans": "Afrikaans",
+                    "mejs.albanian": "Albanian",
+                    "mejs.arabic": "Arabic",
+                    "mejs.belarusian": "Belarusian",
+                    "mejs.bulgarian": "Bulgarian",
+                    "mejs.catalan": "Catalan",
+                    "mejs.chinese": "Chinese",
+                    "mejs.chinese-simplified": "Chinese (Simplified)",
+                    "mejs.chinese-traditional": "Chinese (Traditional)",
+                    "mejs.croatian": "Croatian",
+                    "mejs.czech": "Czech",
+                    "mejs.danish": "Danish",
+                    "mejs.dutch": "Dutch",
+                    "mejs.english": "English",
+                    "mejs.estonian": "Estonian",
+                    "mejs.filipino": "Filipino",
+                    "mejs.finnish": "Finnish",
+                    "mejs.french": "French",
+                    "mejs.galician": "Galician",
+                    "mejs.german": "German",
+                    "mejs.greek": "Greek",
+                    "mejs.haitian-creole": "Haitian Creole",
+                    "mejs.hebrew": "Hebrew",
+                    "mejs.hindi": "Hindi",
+                    "mejs.hungarian": "Hungarian",
+                    "mejs.icelandic": "Icelandic",
+                    "mejs.indonesian": "Indonesian",
+                    "mejs.irish": "Irish",
+                    "mejs.italian": "Italian",
+                    "mejs.japanese": "Japanese",
+                    "mejs.korean": "Korean",
+                    "mejs.latvian": "Latvian",
+                    "mejs.lithuanian": "Lithuanian",
+                    "mejs.macedonian": "Macedonian",
+                    "mejs.malay": "Malay",
+                    "mejs.maltese": "Maltese",
+                    "mejs.norwegian": "Norwegian",
+                    "mejs.persian": "Persian",
+                    "mejs.polish": "Polish",
+                    "mejs.portuguese": "Portuguese",
+                    "mejs.romanian": "Romanian",
+                    "mejs.russian": "Russian",
+                    "mejs.serbian": "Serbian",
+                    "mejs.slovak": "Slovak",
+                    "mejs.slovenian": "Slovenian",
+                    "mejs.spanish": "Spanish",
+                    "mejs.swahili": "Swahili",
+                    "mejs.swedish": "Swedish",
+                    "mejs.tagalog": "Tagalog",
+                    "mejs.thai": "Thai",
+                    "mejs.turkish": "Turkish",
+                    "mejs.ukrainian": "Ukrainian",
+                    "mejs.vietnamese": "Vietnamese",
+                    "mejs.welsh": "Welsh",
+                    "mejs.yiddish": "Yiddish"
+                }
+            };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17" id="mediaelement-core-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=6.4.3" id="mediaelement-migrate-js"></script>
+        <script type="text/javascript" id="mediaelement-js-extra">
+            /* <![CDATA[ */
+            var _wpmejsSettings = {
+                "pluginPath": "\/wp-includes\/js\/mediaelement\/",
+                "classPrefix": "mejs-",
+                "stretching": "responsive",
+                "audioShortcodeLibrary": "mediaelement",
+                "videoShortcodeLibrary": "mediaelement"
+            };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.4.3" id="wp-mediaelement-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.appear.js?ver=6.4.3" id="appear-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/modernizr.min.js?ver=6.4.3" id="modernizr-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-includes/js/hoverIntent.min.js?ver=1.10.2" id="hoverIntent-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.plugin.js?ver=6.4.3" id="jquery-plugin-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/owl.carousel.min.js?ver=6.4.3" id="owl-carousel-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.waypoints.min.js?ver=6.4.3" id="waypoints-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/fluidvids.min.js?ver=6.4.3" id="fluidvids-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/perfect-scrollbar.jquery.min.js?ver=6.4.3" id="perfect-scrollbar-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/ScrollToPlugin.min.js?ver=6.4.3" id="ScrollToPlugin-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/parallax.min.js?ver=6.4.3" id="parallax-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.waitforimages.js?ver=6.4.3" id="waitforimages-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.prettyPhoto.js?ver=6.4.3" id="prettyphoto-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.easing.1.3.js?ver=6.4.3" id="jquery-easing-1.3-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/js_composer/assets/lib/bower/isotope/dist/isotope.pkgd.min.js?ver=6.4.1" id="isotope-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/packery-mode.pkgd.min.js?ver=6.4.3" id="packery-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/swiper.min.js?ver=6.4.3" id="swiper-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/jquery.parallax-scroll.js?ver=6.4.3" id="parallax-scroll-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules/plugins/charts.min.js?ver=6.4.3" id="charts-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/shortcodes/countdown/assets/js/plugins/jquery.countdown.min.js?ver=6.4.3" id="countdown-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/shortcodes/counter/assets/js/plugins/counter.js?ver=6.4.3" id="counter-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/shortcodes/counter/assets/js/plugins/absoluteCounter.min.js?ver=6.4.3" id="absoluteCounter-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/shortcodes/custom-font/assets/js/plugins/typed.js?ver=6.4.3" id="typed-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/shortcodes/pie-chart/assets/js/plugins/easypiechart.js?ver=6.4.3" id="easypiechart-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/shortcodes/uncovering-sections/assets/js/plugins/curtain.js?ver=6.4.3" id="curtain-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/tetsuo-core/post-types/portfolio/shortcodes/portfolio-list-tooltip/assets/js/plugins/bootstrap-tooltip.js?ver=6.4.3" id="bootstrap-tooltip-js"></script>
+        <script type="text/javascript" id="tetsuo-edge-modules-js-extra">
+            /* <![CDATA[ */
+            var edgtfGlobalVars = {
+                "vars": {
+                    "edgtfAddForAdminBar": 0,
+                    "edgtfElementAppearAmount": -100,
+                    "edgtfAjaxUrl": "https:\/\/knoxss.me\/wp-admin\/admin-ajax.php",
+                    "sliderNavPrevArrow": "arrow_carrot-left",
+                    "sliderNavNextArrow": "arrow_carrot-right",
+                    "edgtfStickyHeaderHeight": 0,
+                    "edgtfStickyHeaderTransparencyHeight": 70,
+                    "edgtfTopBarHeight": 0,
+                    "edgtfLogoAreaHeight": 0,
+                    "edgtfMenuAreaHeight": 110,
+                    "edgtfMobileHeaderHeight": 70
+                }
+            };
+            var edgtfPerPageVars = {
+                "vars": {
+                    "edgtfMobileHeaderHeight": 70,
+                    "edgtfStickyScrollAmount": 0,
+                    "edgtfHeaderTransparencyHeight": 0,
+                    "edgtfHeaderVerticalWidth": 0
+                }
+            };
+            /* ]]> */
+        </script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/themes/tetsuo/assets/js/modules.min.js?ver=6.4.3" id="tetsuo-edge-modules-js"></script>
+        <script type="text/javascript" data-cfasync="false" src="https://knoxss.me/wp-content/plugins/s2member/s2member-o.php?ws_plugin__s2member_js_w_globals=1&amp;qcABC=1&amp;ver=240218-230815-251561029" id="ws-plugin--s2member-js"></script>
+        <script type="text/javascript" src="https://knoxss.me/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=6.4.1" id="wpb_composer_front_js-js"></script>
+    </body>
+</html>
